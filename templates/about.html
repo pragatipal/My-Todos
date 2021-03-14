@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    About My Todos
+{% endblock title %}
+{% block body %}
+    <div class="container">
+        <h2 class="head">About My Todos</h2>
+        <p class="about">This is My Todos app. To enter your todo: Enter Todo Title and Todo Description. Submit and Tada! <br>
+        </p>
+        <ul>
+            <li class="about"><button class="btn btn-outline-dark btn-sm mx-1">Delete</button> - Deletes The Todo</li>
+            <li class="about"><button class="btn btn-outline-dark btn-sm mx-1">Update</button> - Directs to an update page where you can update you todo and delete the previous one as and when required.</li>
+        </ul>
+        <a href="/" type="button" class="about btn btn-dark mx-3">Return To My Todos</a>
+    </div>
+{% endblock body %}

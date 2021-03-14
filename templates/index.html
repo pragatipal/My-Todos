@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Todos
+{% endblock title %}
+
+{% block body %}
+<div class="container-fluid">
+  <h2 class="head">Add a Todo</h2>
+  <form action="/" method="POST">
+    <div class="mb-3">
+      <label for="title" class="form-label">Todo Title</label>
+      <input type="text" name="title" class="form-control" id="title">
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">Todo Description</label>
+      <input type="text" name="desc" class="form-control" id="desc">
+    </div>
+    <button type="submit" class="btn btn-dark mx-1">Submit</button>
+  </form>
+</div>
+
+<div class="container-fluid my-10">
+  <h2 class="head">My Todos</h2>
+  {% if allTodo|length ==0 %}
+  <div class="alert alert-dark mt-5" role="alert">
+    No Todos Found. Add Your First Todo Now!
+  </div>
+  {% else %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">Todo title</th>
+        <th scope="col">Todo Description</th>
+        <th scope="col">Date Created</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in allTodo %}
+      <tr>
+        <th>{{loop.index}}</th>
+        <td>{{todo.title}}</td>
+        <td>{{todo.desc}}</td>
+        <td>{{todo.date_created}}</td>
+        <td>
+          <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
+          <a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  {% endif %}
+
+</div>
+{% endblock body %}
